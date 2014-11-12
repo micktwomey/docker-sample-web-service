@@ -10,11 +10,18 @@ def hello():
     })
 
 
-@app.route("/health")
+@app.route("/healthcheck")
 def health():
     return flask.jsonify({
         "status": "ok"
     })
+
+
+@app.route("/healthcheck/fail")
+def health_fail():
+    return flask.jsonify({
+        "status": "error"
+    }), 500
 
 
 if __name__ == '__main__':
